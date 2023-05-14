@@ -1,0 +1,85 @@
+body {
+    text-align: center;
+}
+
+.container-form {
+    width: 90%;
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.formulario {
+    width: 400px;
+    height: auto;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 2rem;
+    background-color: chartreuse;
+    text-align: center;
+    display: block;
+}
+
+.userBox {
+    position: relative;
+    font-family: cursive;
+}
+
+.userBox label {
+    padding: 5px 10px;
+    background-color: transparent;
+    color: #000000;
+    position: absolute;
+    top: 40%;
+    left: 41px;
+    transform: translateY(-25%);
+    text-transform: capitalize;
+    pointer-events: none;
+    font-size: 20px;
+    transition: all 0.3s;
+    font-family: cursive;
+}
+
+.userBox input {
+    padding: 18px 15px;
+    margin: 0.5rem;
+    width: 300px;
+    border: 3px solid #fff;
+    outline: none;
+    font-size: 16px;
+    font-family: inherit;
+    background-color: transparent;
+    color: #000000;
+    border-radius: 10px;
+}
+
+.userBox input:focus+label,
+.userBox input:not(:placeholder-shown)+label {
+    color: #fff;
+    border-radius: 5px;
+    background-color: #5c676c;
+    top: 0;
+    font-size: 16px;
+}
+
+#btn {
+    padding: 1rem;
+    font-weight: 400;
+    background-color: #fff;
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    transition: all 0.3s ease-in;
+    color: #000;
+}
+
+.textform {
+    color: #060606;
+    padding: 2.7rem 0;
+    font-size: 1.9rem;
+    font-family: cursive;
+    text-decoration: none;
+}
