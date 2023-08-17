@@ -1,9 +1,10 @@
 <?php
-include ("../DB/coneDB.php");
+include_once("../DB/coneDB.php");
 $rol=$_POST["rol"];
 $doc=$_POST["doc"];
 $cont=MD5($_POST["contr"]);
-$query= mysqli_query($conexion, "SELECT * FROM proyneg.usuario  WHERE  idRol=$rol AND Doc = '$doc'  AND Contraseña ='$cont' and idEst=1");
+$con= "SELECT * FROM usuario WHERE idrol='$rol' AND Doc='$doc' and Contrasena='$cont' and idest=1";
+$query= mysqli_query($conexion, $con);
 $nr = mysqli_num_rows($query);
 if ($nr==1){
    session_start();
