@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../styles/ADM4.css">
-    <link rel="stylesheet" type="text/css" href="../styles/BARADM1.css">
+    <link rel="stylesheet" type="text/css" href="../styles/ADM10.css">
+    <link rel="stylesheet" type="text/css" href="../styles/BARADM2.css">
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="../IMG/San Jose.png" sizes="any">
+    <script defer src="./formularios.js"></script>
     <title>Tecnologia</title>
 </head>
 <body>
@@ -54,8 +55,10 @@
             </a>
         </div>
     </div>
+    <a href="./Prodcrea.html"><button>Registrar producto</button></a>
 <table class="table">
         <tr>
+            <td class="text">Codigo</td>
             <td class="text">Producto</td>
             <td class="text">Valor</td>
             <td class="text">Imagen</td>
@@ -67,10 +70,15 @@
     $filas=mysqli_query($conexion, $consulta);
     while ($Producto=mysqli_fetch_array($filas))
     {
-      echo "<tr class='text'> <th>" . $Producto["nomprod"] . "</th>";
-      echo "<th class='text'>" . $Producto["valprod"] . "</th></tr>";
-    }
+      echo "<tr class='text'> <th>" . $Producto["idprod"] . "</th>";
+      echo "<th class='text'>" . $Producto["nomprod"] . "</th>";
+      echo "<th class='text'>" . $Producto["valprod"] . "</th>";
+      
     ?>
+    <th><a href="./editprod.php?id=<?php echo $Producto['idprod']?>" class="btn btn-warning">Editar</a></th>
+    <th><a href="../modelo/eliminar.php?id1=<?php echo $dato['documento']?>" class="btn btn-outline-danger">Inactivar</a></th><tr>
+    <?php }
+            ?>
     </table>
     <script src="../C/main.js" charset="UTF-8"></script>
 <div>
