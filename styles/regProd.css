@@ -1,0 +1,42 @@
+body {
+    font-family: 'Roboto';
+    background: #56ab2f; 
+     /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);  
+/* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #a8e063, #56ab2f);
+ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+height: 650px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+h1 {
+    text-align: center;
+    font-weight: 700;
+}
+
+form {
+    background: #fff;
+    padding: 40px 0;
+    box-shadow: 0 0 6px 0 rgb(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+.form {
+    width: 100%;
+    margin: auto;
+}
+form .grupo{
+    position: relative;
+    margin: 45px ;
+}
+input{
+    background: none;
+    color: c6c6c6;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--colorTextos);
+}

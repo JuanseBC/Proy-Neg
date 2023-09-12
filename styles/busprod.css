@@ -1,0 +1,11 @@
+.btnRegistrar {
+    margin-left: 1000px;
+    background: #4aff40;
+    border: aliceblue;
+    padding: 4px;
+    border-radius: 6px;
+}
+.btnEditar {
+ font-size: 15px;
+ left: 10%;
+}
