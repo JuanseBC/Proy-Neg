@@ -4,6 +4,7 @@
     border: aliceblue;
     padding: 4px;
     border-radius: 6px;
+    cursor: pointer;
 }
 .btnEditar {
  font-size: 15px;
