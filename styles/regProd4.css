@@ -99,4 +99,43 @@ background: linear-gradient(to right, #a8e063, #56ab2f);
  height: 40px;
  font-size: 16px;
  cursor: pointer;
+ border-radius: 6px;
+}
+
+
+.cat{
+    font-family: 'roboto';
+    background: #56ab2f; 
+     /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);  
+/* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #a8e063, #56ab2f);
+ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ border: none;
+ display: block;
+ width: 80%;
+ margin: 10px auto;
+ color: #000000;
+ height: 40px;
+ font-size: 16px;
+ cursor: pointer;
+ border-radius: 6px;
+}
+.archive{
+font-family: 'roboto';
+background: #56ab2f; 
+     /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);  
+/* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #a8e063, #56ab2f);
+ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ border: none;
+ display: block;
+ width: 70%;
+ margin: 5px auto;
+ color: #000000;
+ height: 20px;
+ font-size: 16px;
+ cursor: pointer;
+ border-radius: 6px;
 }

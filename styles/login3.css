@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #aabbc271;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container-form {
+    width: 90%;
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.welcome-back {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: -5%;
+}
+
+.message h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.8rem;
+    padding: 1rem 0;
+    color: #3c4642;
+}
+
+.nameEmp2 {
+    visibility: hidden;
+}
+
+#btn {
+    padding: 1rem;
+    font-weight: 400;
+    background-color: #fff;
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    transition: all 0.3s ease-in;
+    color: #000;
+}
+
+#btn:hover {
+    background-color: #abdefa;
+}
+
+.formulario {
+    width: 400px;
+    height: 530px;
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 1rem;
+    background-color: chartreuse;
+    text-align: center;
+    display: block;
+}
+
+.textform {
+    color: #000000;
+    padding: 0.5rem 0;
+    font-size: 1.9rem;
+    font-family: cursive;
+}
+
+
+/*ESTILOS PARA LINK DE RECUPERACIÃ“N DE CONTRASEÃ‘A*/
+
+.passR {
+    font-size: 20px;
+    margin: 0;
+    color: rgb(121, 125, 135);
+}
+
+.passR a {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    margin: 0 var(--spacing, 0px);
+    transition: margin 0.25s;
+    font-family: cursive;
+}
+
+.passR a svg {
+    width: 150px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 40px) translateZ(0);
+    fill: none;
+    stroke: var(--stroke, #fff);
+    stroke-linecap: round;
+    stroke-width: 2px;
+    stroke-dasharray: var(--offset, 69px) 278px;
+    stroke-dashoffset: 361px;
+    transition: stroke 0.25s ease var(--stroke-delay, 0s), stroke-dasharray 0.35s;
+}
+
+.passR a:hover {
+    --spacing: 4px;
+    --stroke: #31e8fcbd;
+    --stroke-delay: 0.1s;
+    --offset: 180px;
+}
+
+.cuenta-gratis {
+    padding: 2rem 0;
+}
+
+
+/*ESTILOS PARA INPUT DE USUARIO Y CONTRASEÃ‘A*/
+
+.userBox {
+    position: relative;
+    font-family: cursive;
+}
+
+.userBox label {
+    padding: 5px 10px;
+    background-color: transparent;
+    color: #000000;
+    position: absolute;
+    top: 40%;
+    left: 41px;
+    transform: translateY(-25%);
+    text-transform: capitalize;
+    pointer-events: none;
+    font-size: 20px;
+    transition: all 0.3s;
+    font-family: cursive;
+}
+
+.userBox input {
+    padding: 18px 15px;
+    margin: 0.5rem;
+    width: 300px;
+    border: 3px solid #fff;
+    outline: none;
+    font-size: 16px;
+    font-family: inherit;
+    background-color: transparent;
+    color: #000000;
+    border-radius: 10px;
+}
+
+.userBox input:focus+label,
+.userBox input:not(:placeholder-shown)+label {
+    color: #fff;
+    border-radius: 5px;
+    background-color: #5c676c;
+    top: 0;
+    font-size: 16px;
+}
+
+a.mod {
+    margin-top: 40%;
+    border: 1px solid #f1eded;
+    border-radius: 2rem;
+    background-color: #1f1f1f;
+    color: #f1eded;
+    width: 8rem;
+    text-align: center;
+    padding: 1%;
+    cursor: pointer;
+}
+
+a.mod:hover {
+    border: 1px solid #1f1f1f;
+    background-color: #f1eded;
+    color: #1f1f1f;
+    cursor: pointer;
+}
+
+a.mod:active {
+    background-color: #808280;
+}
+
+.oscuro {
+    background-color: #2b2b2b;
+    color: #f1eded;
+}
+
+.oscuro .userBox input:focus+label,
+.oscuro .userBox input:not(:placeholder-shown)+label {
+    color: #fff;
+    border-radius: 5px;
+    background-color: #303030;
+    top: 0;
+    font-size: 16px;
+}
+
+.oscuro .ingBot:visited {
+    color: #fff;
+}
+
+.oscuro a:visited {
+    color: rgb(255, 254, 176);
+}
+
+.oscuro a.modi {
+    border: 1px solid #1f1f1f;
+    border-radius: 2rem;
+    background-color: #f1eded;
+    color: #1f1f1f;
+    width: 8rem;
+    text-align: center;
+    padding: 1%;
+    cursor: pointer;
+}
+
+.oscuro a.modi:hover {
+    border: 1px solid #f1eded;
+    background-color: #1f1f1f;
+    color: #f1eded;
+    cursor: pointer;
+}
+
+.oscuro a.modi:active {
+    background-color: #808280;
+}
+
+@media screen and (max-width: 720px) {
+    body {
+        width: 100%;
+        top: 0;
+        left: 0;
+        background: #aabbc271;
+    }
+    .container-form {
+        width: 50%;
+        margin-top: 60%;
+    }
+    .formulario {
+        padding: 4rem;
+        margin: 3rem;
+        border-radius: 10px;
+        background-color: chartreuse;
+        text-align: center;
+        display: block;
+    }
+    #imagen {
+        max-width: 12rem;
+        margin-top: 5%;
+    }
+    .welcome-back {
+        position: absolute;
+        top: 7px;
+        font-size: 90%;
+        text-align: center;
+        color: #4e635a;
+        visibility: visible;
+    }
+    a.mod {
+        display: none;
+    }
+}
+
+.select {
+    padding: 13px 12px;
+    font-family: cursive;
+    margin: 0.5rem;
+    width: 300px;
+    border: 3px solid #fff;
+    border-radius: 10px;
+    display: block;
+    font-weight: 400;
+    margin-left: 80px;
+    color: rgb(185, 106, 4);
+    background-color: transparent;
+    font-size: 16px;
+}
+
+.rol {
+    width: 160px;
+}
+
+.rol-text {
+    color: #000000;
+    font-family: cursive;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+}

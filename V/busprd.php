@@ -54,7 +54,7 @@
             </a>
         </div>
     </div>
-    <a href="./regProd.html" ><button class="btnRegistrar">Registrar producto</button></a>
+    <a href="regProd.php" ><button class="btnRegistrar">Registrar producto</button></a>
 <table class="table">
         <tr>
             <td class="text">Codigo</td>
