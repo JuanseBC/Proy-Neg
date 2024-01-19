@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-01-2024 a las 02:32:01
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.29
+-- Tiempo de generación: 18-01-2024 a las 20:11:56
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `doc` (
   `idDoc` int(20) NOT NULL,
   `Doc` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `doc`
@@ -50,7 +50,7 @@ INSERT INTO `doc` (`idDoc`, `Doc`) VALUES
 CREATE TABLE `estado` (
   `idest` int(20) NOT NULL,
   `Estado` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `estado`
@@ -63,29 +63,28 @@ INSERT INTO `estado` (`idest`, `Estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `factura`
+-- Estructura de tabla para la tabla `facclient`
 --
 
-CREATE TABLE `factura` (
+CREATE TABLE `facclient` (
   `idfactura` int(200) NOT NULL,
-  `Factura` varchar(200) DEFAULT NULL,
-  `Proveedor` varchar(200) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `Archivo` varchar(1000) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
 
 --
--- Volcado de datos para la tabla `factura`
+-- Estructura de tabla para la tabla `facprov`
 --
 
-INSERT INTO `factura` (`idfactura`, `Factura`, `Proveedor`, `fecha`, `Archivo`) VALUES
-(1, 'Peluches', 'PELUCHES S.A.S', '2023-10-23', NULL),
-(2, 'Ollas metalicas', 'Metal S.A.S', '2023-02-03', NULL),
-(3, 'Canasta', 'SERTICA', '2023-01-14', NULL),
-(4, 'Loza', 'Corona S.A.S', '2023-05-18', NULL),
-(5, 'Vasos mugs', 'aranda', '2023-07-12', NULL),
-(6, 'Cobijas', 'Sabanas', '2023-06-28', NULL),
-(7, 'llaveros', 'orlando', '2023-04-06', NULL);
+CREATE TABLE `facprov` (
+  `idfactura` int(200) NOT NULL,
+  `Factura` varchar(200) DEFAULT NULL,
+  `idProv` int(255) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `Archivo` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -99,19 +98,26 @@ CREATE TABLE `producto` (
   `valprod` bigint(255) DEFAULT NULL,
   `idcateg` varchar(300) DEFAULT NULL,
   `archivo` varchar(1000) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
 INSERT INTO `producto` (`idprod`, `nomprod`, `valprod`, `idcateg`, `archivo`) VALUES
-(1, 'Posillo Mugs', 8500, 'Hogar', NULL),
-(2, 'Audifonos', 10000, 'Tecnologia', NULL),
-(3, 'Trapero 500gr', 6500, 'Aseo', NULL),
-(4, 'Cortina en tiras', 5000, 'Piñateria', NULL),
-(5, 'Esfero OFI-EsCO', 1000, 'Papeleria', NULL),
-(875, 'juego de ollas imusa', 250000, 'Hogar', 'Juego imusa.png');
+(750, 'Bafle Foxtech', 82000, 'Tecnologia', 'bafle foxtech.png');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedor`
+--
+
+CREATE TABLE `proveedor` (
+  `idProv` int(255) NOT NULL,
+  `vendedor` varchar(200) NOT NULL,
+  `empresa` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -122,7 +128,7 @@ INSERT INTO `producto` (`idprod`, `nomprod`, `valprod`, `idcateg`, `archivo`) VA
 CREATE TABLE `rol` (
   `idrol` int(20) NOT NULL,
   `Rol` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `rol`
@@ -141,7 +147,7 @@ INSERT INTO `rol` (`idrol`, `Rol`) VALUES
 
 CREATE TABLE `tipprod` (
   `idcateg` varchar(300) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tipprod`
@@ -168,19 +174,19 @@ CREATE TABLE `usuario` (
   `Contrasena` varbinary(200) NOT NULL,
   `idrol` int(20) NOT NULL,
   `idest` int(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`idDoc`, `Doc`, `Nombre`, `Apellido`, `Contrasena`, `idrol`, `idest`) VALUES
-(1, '80053046', 'Luis Alfredo', 'Beltran Hidalgo', 0x3831646339626462353264303464633230303336646264383331336564303535, 1, 1),
-(1, '1987654345', 'Elizabeth', 'BCamelo rojas', 0x3831646339626462353264303464633230303336646264383331336564303535, 1, 1),
-(1, '65476453', 'Carlos', 'Perez', 0x3831646339626462353264303464633230303336646264383331336564303535, 2, 1),
-(1, '87657453', 'Felipe', 'Torres', 0x3831646339626462353264303464633230303336646264383331336564303535, 2, 1),
-(1, '178454323', 'Laura', 'Maldonado', 0x3831646339626462353264303464633230303336646264383331336564303535, 3, 1),
-(1, '9087675645', 'Angie', 'Cuervo', 0x3831646339626462353264303464633230303336646264383331336564303535, 3, 1);
+(1, '178454323', 'Laura', 'Maldonado', 0x3832376363623065656138613730366334633334613136383931663834653762, 3, 1),
+(1, '52830078', 'Elizabeth', 'Camelo Rojas', 0x3832376363623065656138613730366334633334613136383931663834653762, 1, 1),
+(1, '65476453', 'Carlos', 'Perez', 0x3832376363623065656138613730366334633334613136383931663834653762, 2, 1),
+(1, '80053046', 'Luis Alfredo', 'Beltran Hidalgo', 0x3832376363623065656138613730366334633334613136383931663834653762, 1, 1),
+(1, '87657453', 'Felipe', 'Torres', 0x3832376363623065656138613730366334633334613136383931663834653762, 2, 1),
+(1, '9087675645', 'Angie', 'Cuervo', 0x3832376363623065656138613730366334633334613136383931663834653762, 3, 1);
 
 --
 -- Índices para tablas volcadas
@@ -199,10 +205,17 @@ ALTER TABLE `estado`
   ADD PRIMARY KEY (`idest`);
 
 --
--- Indices de la tabla `factura`
+-- Indices de la tabla `facclient`
 --
-ALTER TABLE `factura`
+ALTER TABLE `facclient`
   ADD PRIMARY KEY (`idfactura`);
+
+--
+-- Indices de la tabla `facprov`
+--
+ALTER TABLE `facprov`
+  ADD PRIMARY KEY (`idfactura`),
+  ADD KEY `idProv` (`idProv`);
 
 --
 -- Indices de la tabla `producto`
@@ -210,6 +223,12 @@ ALTER TABLE `factura`
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`idprod`),
   ADD KEY `idcateg` (`idcateg`);
+
+--
+-- Indices de la tabla `proveedor`
+--
+ALTER TABLE `proveedor`
+  ADD PRIMARY KEY (`idProv`);
 
 --
 -- Indices de la tabla `rol`
@@ -229,36 +248,32 @@ ALTER TABLE `tipprod`
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`Doc`),
   ADD KEY `idDoc` (`idDoc`),
-  ADD KEY `idrol` (`idrol`),
-  ADD KEY `idest` (`idest`);
+  ADD KEY `idest` (`idest`),
+  ADD KEY `idrol` (`idrol`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- Restricciones para tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `doc`
+-- Filtros para la tabla `facprov`
 --
-ALTER TABLE `doc`
-  MODIFY `idDoc` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `facprov`
+  ADD CONSTRAINT `facprov_ibfk_1` FOREIGN KEY (`idProv`) REFERENCES `proveedor` (`idProv`);
 
 --
--- AUTO_INCREMENT de la tabla `estado`
+-- Filtros para la tabla `producto`
 --
-ALTER TABLE `estado`
-  MODIFY `idest` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `producto`
+  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`idcateg`) REFERENCES `tipprod` (`idcateg`);
 
 --
--- AUTO_INCREMENT de la tabla `factura`
+-- Filtros para la tabla `usuario`
 --
-ALTER TABLE `factura`
-  MODIFY `idfactura` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `rol`
---
-ALTER TABLE `rol`
-  MODIFY `idrol` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`idDoc`) REFERENCES `doc` (`idDoc`),
+  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`idest`) REFERENCES `estado` (`idest`),
+  ADD CONSTRAINT `usuario_ibfk_3` FOREIGN KEY (`idrol`) REFERENCES `rol` (`idrol`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

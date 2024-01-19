@@ -1,0 +1,52 @@
+body {
+    text-align: center;
+}
+
+header {
+    display: flex;
+}
+
+.IMGSJ {
+    width: 150px;
+    height: 120px;
+    border-radius: 10px;
+    margin-left: 2%;
+    margin-top: 1%;
+    margin-block-end: 1%;
+}
+
+.Titulo {
+    font-family: cursive;
+    font-style: normal;
+    font-weight: 400px;
+    font-size: 30px;
+    margin-block-end: 2%;
+    margin-inline-end: 2%;
+}
+
+.contenedor_Principal {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/*Diseño para las categorias */
+
+.categ{
+    background-color: #373d35;
+}
+
+.Categories{
+ font-size: 15px;
+ background-attachment: fixed;
+ color: #373d35;
+ box-shadow: 0 0 6px 0 rgba(23, 255, 2, 0.8);
+ padding: 9px;
+ border-radius: 7px;
+ border: none;
+ cursor: pointer;
+ background-color: #fff;
+ margin-top: 45px;
+}
+

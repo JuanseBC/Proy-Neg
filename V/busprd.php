@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../styles/busprod1.css">
+    <link rel="stylesheet" type="text/css" href="../styles/busprod2.css">
     <link rel="stylesheet" type="text/css" href="../styles/BARADM2.css">
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="../IMG/San Jose.png" sizes="any">
@@ -54,13 +54,19 @@
             </a>
         </div>
     </div>
-    <a href="regProd.php" ><button class="btnRegistrar">Registrar producto</button></a>
+
+    <div class="Registrar">
+    <a href="regProd.php" ><button id="btn">Registrar producto</button></a>
+</div>
+
 <table class="table">
         <tr>
             <td class="text">Codigo</td>
             <td class="text">Producto</td>
             <td class="text">Valor</td>
             <td class="text">Imagen</td>
+            <td class="text">Editar </td>
+            <td class="text">Eliminar</td>
         </tr>
     <?php
     $prod= $_GET["id"];   
@@ -72,10 +78,11 @@
       echo "<tr class='text'> <th>" . $Producto["idprod"] . "</th>";
       echo "<th class='text'>" . $Producto["nomprod"] . "</th>";
       echo "<th class='text'>" . $Producto["valprod"] . "</th>";
+      echo "<th class='text'>" . $Producto["archivo"] . "</th>";
       
     ?>
-    <th><a href="./editprod.php?id=<?php echo $Producto['idprod']?>" class="btnEditar">Editar</a></th>
-    <th><a href="../modelo/eliminar.php?id1=<?php echo $dato['documento']?>" class="btn btn-outline-danger">Inactivar</a></th><tr>
+    <th><a href="../M/EDITPROD.php?id=<?php echo $Producto['idprod']?>" id="btn">Editar</a></th>
+    <th><a href="../modelo/eliminar.php?id1=<?php echo $Producto['idprod']?>" id="btn">Inactivar</a></th><tr>
     <?php }
             ?>
     </table>

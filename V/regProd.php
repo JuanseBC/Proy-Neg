@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../IMG/San Jose.png" sizes="any">
-    <link rel="stylesheet" type="text/css" href="../styles/regProd4.css">
+    <link rel="stylesheet" type="text/css" href="../styles/regProd6.css">
     <title>Registro productos</title>
 </head>
 <body>
@@ -46,10 +46,11 @@
         </div>
         <div>
             <button type="submit">Registrar</button>
+            <a href="ADM.php" class="btnReg">Regresar</a>
         </div>
 </div>
 
   </form>
-    
+  
 </body>
 </html>

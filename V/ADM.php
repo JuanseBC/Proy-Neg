@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../styles/ADM11.css">
+    <link rel="stylesheet" type="text/css" href="../styles/ADM12.css">
     <link rel="stylesheet" type="text/css" href="../styles/BARADM2.css">
     <link rel="icon" type="image/png" href="../IMG/San Jose.png" sizes="any">
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
@@ -58,8 +58,6 @@
     <div class="Titulo">
         Cacharreria y papeleria del san jose
     </div>
-    
-    <div>
         <?php
          
          $conexion = new mysqli("localhost","root","","proyneg");
@@ -73,14 +71,11 @@
           while ($prod=mysqli_fetch_array($uni))
           {
           ?>
-          <div class="CuaTabl">
-            <a class="Caja" href="busprd.php?id=<?php echo $prod['idcateg'];?>"><?php echo "".$prod['idcateg'];?>  </a>
-          </div>
+            <a href="busprd.php?id=<?php echo $prod['idcateg'];?>" class="Categories"><?php echo "".$prod['idcateg'];?>  </a>
           <?php
           }
           ?>
        </div>
-  </div>
   <script src="../C/main.js" charset="UTF-8"></script>
 </body>
 </html>
