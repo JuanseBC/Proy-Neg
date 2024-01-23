@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../styles/busprod2.css">
+    <link rel="stylesheet" type="text/css" href="../styles/busprod3.css">
     <link rel="stylesheet" type="text/css" href="../styles/BARADM2.css">
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="../IMG/San Jose.png" sizes="any">
@@ -59,34 +59,36 @@
     <a href="regProd.php" ><button id="btn">Registrar producto</button></a>
 </div>
 
-<table class="table">
-        <tr>
-            <td class="text">Codigo</td>
-            <td class="text">Producto</td>
-            <td class="text">Valor</td>
-            <td class="text">Imagen</td>
-            <td class="text">Editar </td>
-            <td class="text">Eliminar</td>
-        </tr>
-    <?php
-    $prod= $_GET["id"];   
-    require_once ("../DB/coneDB.php");
-    $consulta= "Select * from producto where idcateg='$prod'";
-    $filas=mysqli_query($conexion, $consulta);
-    while ($Producto=mysqli_fetch_array($filas))
-    {
-      echo "<tr class='text'> <th>" . $Producto["idprod"] . "</th>";
-      echo "<th class='text'>" . $Producto["nomprod"] . "</th>";
-      echo "<th class='text'>" . $Producto["valprod"] . "</th>";
-      echo "<th class='text'>" . $Producto["archivo"] . "</th>";
-      
-    ?>
-    <th><a href="../M/EDITPROD.php?id=<?php echo $Producto['idprod']?>" id="btn">Editar</a></th>
-    <th><a href="../modelo/eliminar.php?id1=<?php echo $Producto['idprod']?>" id="btn">Inactivar</a></th><tr>
-    <?php }
-            ?>
-    </table>
-    <script src="../C/main.js" charset="UTF-8"></script>
+
+    <table class="table">
+            <tr>
+                <td class="text">Codigo</td>
+                <td class="text">Producto</td>
+                <td class="text">Valor</td>
+                <td class="text">Imagen</td>
+                <td class="text">Editar </td>
+                <td class="text">Eliminar</td>
+            </tr>
+        <?php
+        $prod= $_GET["id"];   
+        require_once ("../DB/coneDB.php");
+        $consulta= "Select * from producto where idcateg='$prod' and idest='1'";
+        $filas=mysqli_query($conexion, $consulta);
+        while ($Producto=mysqli_fetch_array($filas))
+        {
+        echo "<tr class='text'> <th>" . $Producto["idprod"] . "</th>";
+        echo "<th class='text'>" . $Producto["nomprod"] . "</th>";
+        echo "<th class='text'>" . $Producto["valprod"] . "</th>";
+        echo "<th class='text'>" . $Producto["archivo"] . "</th>";
+        
+        ?>
+        <th><a href="../M/EDITPROD.php?id=<?php echo $Producto['idprod']?>" id="btn">Editar</a></th>
+        <th><a href="../C/Inactivar.php?id1=<?php echo $Producto['idprod']?>" id="btn">Inactivar</a></th><tr>
+        <?php }
+                ?>
+        </table>
+
+<script src="../C/main.js" charset="UTF-8"></script>
 <div>
 </body>
 </html>

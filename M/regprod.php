@@ -6,13 +6,13 @@ $Val = $_POST["Val"];
 $archive = $_POST["archive"];
 
 $con= new mysqli("localhost","root","","proyneg");
-$sql= "INSERT INTO producto values('$codProd', '$nomProd' , '$Val', '$catProd' , '$archive')";
+$sql= "INSERT INTO producto values('$codProd', '$nomProd' , '$Val', '$catProd' , '$archive', 1)"; 
 $resultado=mysqli_query ($con,$sql);
 mysqli_close($con);
 if($resultado){
     header("location:../V/ADM.php");
 }
 else{
-    echo "Falta algun dato o el producto ya existe";
+    echo"<script>alert('No se pudo registrar el producto');window.location='../V/ADM.php'</script>";
 }
 ?>
