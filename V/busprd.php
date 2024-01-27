@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,85 +11,88 @@
     <link rel="icon" type="image/png" href="../IMG/San Jose.png" sizes="any">
     <title>Tecnologia</title>
 </head>
+
 <body>
-<div class="CuaTabl" id="body">
-<header>
-        <div class="icon__menu">
-            <i class="fas fa-bars" id="btn_open"></i>
+    <div class="CuaTabl" id="body">
+        <header>
+            <div class="icon__menu">
+                <i class="fas fa-bars" id="btn_open"></i>
+            </div>
+        </header>
+        <div class="menu__side" id="menu_side">
+            <div>
+                <IMG class="img" type="icon" SRC="../IMG/San Jose.png" style="width: 60px;  margin: 3px;">
+            </div>
+            <div class="options__menu">
+                <a href="ADM.php" class="selected">
+                    <div class="option">
+                        <i class="fas fa-home" title="Inicio"></i>
+                        <h4>Inicio</h4>
+                    </div>
+                </a>
+                <a href="Facturas.php">
+                    <div class="option">
+                        <i class="fas fa-file-alt" title="Portafolio"></i>
+                        <h4>Facturas</h4>
+                    </div>
+                </a>
+                <a href="Empleados.php">
+                    <div class="option">
+                        <i class="far fa-file-alt" title="Cursos"></i>
+                        <h4>Empleados</h4>
+                    </div>
+                </a>
+                <a href="Clientes.php">
+                    <div class="option">
+                        <i class="far fa-file-alt" title="Cursos"></i>
+                        <h4>Clientes</h4>
+                    </div>
+                </a>
+                <a href="Registro.php">
+                    <div class="option">
+                        <i class="far fa-file-alt" title="Cursos"></i>
+                        <h4>Registrar</h4>
+                    </div>
+                </a>
+            </div>
         </div>
-    </header>
-    <div class="menu__side" id="menu_side">
-        <div>
-            <IMG class="img" type="icon" SRC="../IMG/San Jose.png" style="width: 60px;  margin: 3px;">
+
+        <div class="Registrar">
+            <a href="regProd.php"><button id="btn">Registrar producto</button></a>
         </div>
-        <div class="options__menu">
-            <a href="ADM.php" class="selected">
-                <div class="option">
-                    <i class="fas fa-home" title="Inicio"></i>
-                    <h4>Inicio</h4>
-                </div>
-            </a>
-            <a href="Facturas.php">
-                <div class="option">
-                    <i class="fas fa-file-alt" title="Portafolio"></i>
-                    <h4>Facturas</h4>
-                </div>
-            </a>
-            <a href="Empleados.php">
-                <div class="option">
-                    <i class="far fa-file-alt" title="Cursos"></i>
-                    <h4>Empleados</h4>
-                </div>
-            </a>
-            <a href="Clientes.php">
-                <div class="option">
-                    <i class="far fa-file-alt" title="Cursos"></i>
-                    <h4>Clientes</h4>
-                </div>
-            </a>
-            <a href="Registro.php">
-                <div class="option">
-                    <i class="far fa-file-alt" title="Cursos"></i>
-                    <h4>Registrar</h4>
-                </div>
-            </a>
-        </div>
-    </div>
 
-    <div class="Registrar">
-    <a href="regProd.php" ><button id="btn">Registrar producto</button></a>
-</div>
-
-
-    <table class="table">
+<div class="contenedortabla"></div>
+        <table class="table">
             <tr>
                 <td class="text">Codigo</td>
                 <td class="text">Producto</td>
+                <td class="text">Stock</td>
                 <td class="text">Valor</td>
                 <td class="text">Imagen</td>
                 <td class="text">Editar </td>
                 <td class="text">Eliminar</td>
             </tr>
-        <?php
-        $prod= $_GET["id"];   
-        require_once ("../DB/coneDB.php");
-        $consulta= "Select * from producto where idcateg='$prod' and idest='1'";
-        $filas=mysqli_query($conexion, $consulta);
-        while ($Producto=mysqli_fetch_array($filas))
-        {
-        echo "<tr class='text'> <th>" . $Producto["idprod"] . "</th>";
-        echo "<th class='text'>" . $Producto["nomprod"] . "</th>";
-        echo "<th class='text'>" . $Producto["valprod"] . "</th>";
-        echo "<th class='text'>" . $Producto["archivo"] . "</th>";
-        
-        ?>
-        <th><a href="../M/EDITPROD.php?id=<?php echo $Producto['idprod']?>" id="btn">Editar</a></th>
-        <th><a href="../C/Inactivar.php?id1=<?php echo $Producto['idprod']?>" id="btn">Inactivar</a></th><tr>
-        <?php }
+            <?php
+            $prod = $_GET["id"];
+            require_once("../DB/coneDB.php");
+            $consulta = "Select * from producto where idcateg='$prod' and idest='1'";
+            $filas = mysqli_query($conexion, $consulta);
+            while ($Producto = mysqli_fetch_array($filas)) {
+                echo "<tr class='text'> <th>" . $Producto["idprod"] . "</th>";
+                echo "<th class='text'>" . $Producto["nomprod"] . "</th>";
+                echo "<th class='text'>" . $Producto["stock"] . "</th>";
+                echo "<th class='text'>" . $Producto["valprod"] . "</th>";
+                echo "<th class='text'>" . $Producto["archivo"] . "</th>";
                 ?>
+                <th><a href="../M/EDITPROD.php?id=<?php echo $Producto['idprod'] ?>" id="btn">Editar</a></th>
+                <th><a href="../C/Inactivar.php?id1=<?php echo $Producto['idprod'] ?>" id="btn">Inactivar</a></th>
+                <tr>
+                <?php }
+            ?>
         </table>
 
-<script src="../C/main.js" charset="UTF-8"></script>
-<div>
+        <script src="../C/main.js" charset="UTF-8"></script>
+        <div>
 </body>
+
 </html>

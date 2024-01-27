@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-01-2024 a las 20:11:56
+-- Tiempo de generación: 27-01-2024 a las 02:10:18
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -93,19 +93,23 @@ CREATE TABLE `facprov` (
 --
 
 CREATE TABLE `producto` (
-  `idprod` int(255) NOT NULL,
+  `idprod` varchar(255) NOT NULL,
   `nomprod` varchar(300) DEFAULT NULL,
   `valprod` bigint(255) DEFAULT NULL,
   `idcateg` varchar(300) DEFAULT NULL,
-  `archivo` varchar(1000) DEFAULT NULL
+  `stock` int(200) DEFAULT NULL,
+  `archivo` varchar(1000) DEFAULT NULL,
+  `idest` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`idprod`, `nomprod`, `valprod`, `idcateg`, `archivo`) VALUES
-(750, 'Bafle Foxtech', 82000, 'Tecnologia', 'bafle foxtech.png');
+INSERT INTO `producto` (`idprod`, `nomprod`, `valprod`, `idcateg`, `stock`, `archivo`, `idest`) VALUES
+('6019', 'Lego 3D', 18000, 'Jugueteria', 2, 'legos3D.png', 1),
+('FX-085BT', 'Bafle Foxtech', 82000, 'Tecnologia', 7, 'bafle foxtech.png', 1),
+('GM-6146', 'Maquina de afeitar Geemy', 55000, 'Aseo', 4, 'bafle foxtech.png', 1);
 
 -- --------------------------------------------------------
 
@@ -156,6 +160,7 @@ CREATE TABLE `tipprod` (
 INSERT INTO `tipprod` (`idcateg`) VALUES
 ('Aseo'),
 ('Hogar'),
+('Jugueteria'),
 ('Papeleria'),
 ('Piñateria'),
 ('Tecnologia');
@@ -222,7 +227,8 @@ ALTER TABLE `facprov`
 --
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`idprod`),
-  ADD KEY `idcateg` (`idcateg`);
+  ADD KEY `idcateg` (`idcateg`),
+  ADD KEY `idest` (`idest`);
 
 --
 -- Indices de la tabla `proveedor`
@@ -265,7 +271,8 @@ ALTER TABLE `facprov`
 -- Filtros para la tabla `producto`
 --
 ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`idcateg`) REFERENCES `tipprod` (`idcateg`);
+  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`idcateg`) REFERENCES `tipprod` (`idcateg`),
+  ADD CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`idest`) REFERENCES `estado` (`idest`);
 
 --
 -- Filtros para la tabla `usuario`

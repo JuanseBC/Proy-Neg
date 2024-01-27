@@ -242,10 +242,12 @@ a.mod:active {
         left: 0;
         background: #aabbc271;
     }
+
     .container-form {
         width: 50%;
         margin-top: 60%;
     }
+
     .formulario {
         padding: 4rem;
         margin: 3rem;
@@ -254,10 +256,12 @@ a.mod:active {
         text-align: center;
         display: block;
     }
+
     #imagen {
         max-width: 12rem;
         margin-top: 5%;
     }
+
     .welcome-back {
         position: absolute;
         top: 7px;
@@ -266,6 +270,7 @@ a.mod:active {
         color: #4e635a;
         visibility: visible;
     }
+
     a.mod {
         display: none;
     }
