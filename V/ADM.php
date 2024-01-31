@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../styles/ADM12.css">
-    <link rel="stylesheet" type="text/css" href="../styles/BARADM2.css">
+    <link rel="stylesheet" type="text/css" href="../styles/BARADM3.css">
     <link rel="icon" type="image/png" href="../IMG/San Jose.png" sizes="any">
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-    
+
     <title>CPSJ</title>
 </head>
+
 <body id="body">
-<header>
+    <header>
         <div class="icon__menu">
             <i class="fas fa-bars" id="btn_open"></i>
         </div>
@@ -30,8 +32,14 @@
             </a>
             <a href="Facturas.php">
                 <div class="option">
-                    <i class="fas fa-file-alt" title="Portafolio"></i>
+                    <i class="far fa-file-alt" title="Portafolio"></i>
                     <h4>Facturas</h4>
+                </div>
+            </a>
+            <a href="generateBill.php">
+                <div class="option">
+                    <i class="fas fa-file-alt" title="Cursos"></i>
+                    <h4>Generar factura</h4>
                 </div>
             </a>
             <a href="Empleados.php">
@@ -42,7 +50,7 @@
             </a>
             <a href="Clientes.php">
                 <div class="option">
-                    <i class="far fa-file-alt" title="Cursos"></i>
+                    <i class="fas fa-file-alt" title="Cursos"></i>
                     <h4>Clientes</h4>
                 </div>
             </a>
@@ -52,30 +60,38 @@
                     <h4>Registrar</h4>
                 </div>
             </a>
+            <a href="../M/logOut.php">
+                <div class="salir">
+                    <i><img class="logOut" src="../IMG/salir.png" alt="Salir"></i>
+                    <h4>Salir</h4>
+                </div>
+            </a>
         </div>
     </div>
 
     <div class="Titulo">
         Cacharreria y papeleria del san jose
     </div>
+    <?php
+
+    $conexion = new mysqli("localhost", "root", "", "proyneg");
+    $consulta = "SELECT * FROM tipprod";
+    $uni = mysqli_query($conexion, $consulta);
+
+    ?>
+
+    <div class="contenedor_Principal">
         <?php
-         
-         $conexion = new mysqli("localhost","root","","proyneg");
-         $consulta= "SELECT * FROM tipprod";
-         $uni=mysqli_query($conexion, $consulta);
-         
+        while ($prod = mysqli_fetch_array($uni)) {
+            ?>
+            <a href="busprd.php?id=<?php echo $prod['idcateg']; ?>" class="Categories">
+                <?php echo "" . $prod['idcateg']; ?>
+            </a>
+            <?php
+        }
         ?>
-        
-        <div class="contenedor_Principal">
-          <?php
-          while ($prod=mysqli_fetch_array($uni))
-          {
-          ?>
-            <a href="busprd.php?id=<?php echo $prod['idcateg'];?>" class="Categories"><?php echo "".$prod['idcateg'];?>  </a>
-          <?php
-          }
-          ?>
-       </div>
-  <script src="../C/main.js" charset="UTF-8"></script>
+    </div>
+    <script src="../C/main.js" charset="UTF-8"></script>
 </body>
+
 </html>
