@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.contenedor_global {
+    width: 100%;
+    height: 100%;
+}
+
+/*Diseño para el div del boton de registrar*/
+
+.contenedor_main_header {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.Registrar {
+    width: 150px;
+    height: 35px;
+    border-radius: 12px;
+}
+
+/* Diseño para la tabla de facturas */
+
+.contenedortabla{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table {
+    justify-content: center;
+    box-shadow: 0 0 6px 0 rgb(53, 255, 26);
+    width: 40%;
+    height: 200px;
+    border-radius: 12px;
+    min-width: auto;
+}
+
+.tabla{
+    background-color: rgb(255, 168, 168);
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Modifica todos los elementos que contengan un id="btn"*/
+#btn {
+    font-size: 15px;
+    left: 10%;
+    background-attachment: fixed;
+    color: #373d35;
+    box-shadow: 0 0 6px 0 rgba(23, 255, 2, 0.8);
+    padding: 9px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.text {
+    padding: 25px;
+}
