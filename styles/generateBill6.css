@@ -96,24 +96,23 @@ body {
 }
 
 .bill {
-    display: flex;
+    text-align: center;
     align-items: center;
-    /* justify-content: space-between; */
     position: relative;
     border-bottom: 1px solid #666;
-    padding: 20px;
 }
 
 .bill .nameProductBill {
     display: block;
     font-weight: bold;
     margin-bottom: 10px;
-    text-transform: uppercase;
+    margin-top: 10px;
 }
 
 .bill .selectAmount {
     display: inline-block;
     margin-right: 25px;
+    margin-bottom: 7px;
 }
 
 .bill .amount {
@@ -124,6 +123,7 @@ body {
     width: 30px;
     padding: 5px;
     text-align: center;
+    margin-bottom: 7px;
 }
 
 .bill .selectAmount i {
@@ -136,6 +136,7 @@ body {
     border: 1px solid #000;
     cursor: pointer;
     font-size: 100%;
+    margin-bottom: 7px;
 }
 
 .bill .valor {
@@ -143,6 +144,7 @@ body {
     display: inline-block;
     font-size: 18px;
     margin-bottom: 5px;
+    
 }
 
 .bill .btn-eliminar {
@@ -168,6 +170,29 @@ body {
 }
 
 .total {
-    margin-top: 1%;
-    padding-bottom: 2%;
+    background-color: #f3f3f3;
+    padding: 30px;
 }
+
+
+.containerBill .total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* SECCION RESPONSIVE */
+@media screen and (max-width: 850px) {
+    .containerGlobal {
+      display: block;
+    }
+    .containerLeft{
+        width: 100% !important;
+    }
+    .containerRigth{
+        width: 100%;
+    }
+  }

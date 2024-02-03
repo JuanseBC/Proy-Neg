@@ -40,7 +40,7 @@ function eliminarItemFactura(event) {
   var buttonClicked = event.target;
   buttonClicked.parentElement.parentElement.remove();
   //Actualizamos el total del carrito
-  actualizarTotalCarrito();
+  actualizarTotalFactura();
 }
 function sumarCantidad(event) {
   var buttonClicked = event.target;
@@ -49,7 +49,7 @@ function sumarCantidad(event) {
   var cantidadActual = selector.getElementsByClassName("amount")[0].value;
   cantidadActual++;
   selector.getElementsByClassName("amount")[0].value = cantidadActual;
-  actualizarTotalCarrito();
+  actualizarTotalFactura();
 }
 //Resto en uno la cantidad del elemento seleccionado
 function restarCantidad(event) {
@@ -60,7 +60,7 @@ function restarCantidad(event) {
   cantidadActual--;
   if (cantidadActual >= 1) {
     selector.getElementsByClassName("amount")[0].value = cantidadActual;
-    actualizarTotalCarrito();
+    actualizarTotalFactura();
   }
 }
 
@@ -73,8 +73,6 @@ function agregarAlaFacturaClicked(event) {
   console.log(precio);
 
   agregarItemAlaFactura(titulo, precio);
-
-  hacerVisibleFactura();
 }
 
 //Funciòn que agrega un item al carrito
@@ -84,12 +82,12 @@ function agregarItemAlaFactura(titulo, precio) {
   var itemsCarrito = document.getElementsByClassName("bill")[0];
 
   //controlador para validar que el producto a ingresar no se encuentra registrado en la factura
-  var nameitembill = itemsCarrito.getElementsByClassName(
+  var nombresItemsCarrito = itemsCarrito.getElementsByClassName(
     "nameProductBill"
   );
-  for (var i = 0; i < nameitembill.length; i++) {
-    if (nameitembill[i].innerText == titulo) {
-      alert("El producto ya se encuentra en la fcatura");
+  for (var i = 0; i < nombresItemsCarrito.length; i++) {
+    if (nombresItemsCarrito[i].innerText == titulo) {
+      alert("El producto ya se encuentra en la factura");
       return;
     }
   }
@@ -103,11 +101,11 @@ function agregarItemAlaFactura(titulo, precio) {
               <input type="text" value="1" class="amount" disable>
               <i class="fa-solid fa-plus additionAmount"></i>
               </div>
-              <span class="valor">${precio}</span>
+              <span class="valProduct">${precio}</span>
           </div>
-          <button class="btn-eliminar">
+          <span class="btn-eliminar">
               <i class="fa-solid fa-trash"></i>
-          </button>
+          </span>
       </div>
   `;
   item.innerHTML = itemContentBill;
@@ -119,13 +117,38 @@ function agregarItemAlaFactura(titulo, precio) {
     .addEventListener("click", eliminarItemFactura);
 
   //Agregmos al funcionalidad restar cantidad del nuevo item
-  var botonRestarCantidad = item.getElementsByClassName("restar-cantidad")[0];
+  var botonRestarCantidad = item.getElementsByClassName("subtractionAmount")[0];
   botonRestarCantidad.addEventListener("click", restarCantidad);
 
   //Agregamos la funcionalidad sumar cantidad del nuevo item
-  var botonSumarCantidad = item.getElementsByClassName("sumar-cantidad")[0];
+  var botonSumarCantidad = item.getElementsByClassName("additionAmount")[0];
   botonSumarCantidad.addEventListener("click", sumarCantidad);
 
   //Actualizamos total
-  actualizarTotalCarrito();
+  actualizarTotalFactura();
+}
+
+//Función para actualizar el total de la factura
+function actualizarTotalFactura() {
+  //seleccionamos el contenedor carrito
+  var carritoContenedor = document.getElementsByClassName("containerBill")[0];
+  var carritoItems = carritoContenedor.getElementsByClassName("billproducts");
+  var total = 0;
+  //recorremos cada elemento del carrito para actualizar el total
+  for (var i = 0; i < carritoItems.length; i++) {
+    var item = carritoItems[i];
+    var precioElemento = item.getElementsByClassName("valProduct")[0];
+    //quitamos el simobolo peso y el punto de milesimos.
+    var precio = parseFloat(
+      precioElemento.innerText.replace("$", "").replace(".", "")
+    );
+    var cantidadItem = item.getElementsByClassName("amount")[0];
+    console.log(precio);
+    var cantidad = cantidadItem.value;
+    total = total + precio * cantidad;
+  }
+  total = Math.round(total * 100) / 100;
+
+  document.getElementsByClassName("valFinish")[0].innerText =
+    "$" + total.toLocaleString("es") + ",00";
 }
